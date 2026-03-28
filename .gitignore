@@ -1,0 +1,24 @@
+# Mac OS
+.DS_Store
+
+# .NET / C#
+[Bb]in/
+[Oo]bj/
+[Nn]upkg/
+*.nupkg
+*.user
+*.userosscache
+*.suo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Editor / IDE
+.vscode/
+.idea/
