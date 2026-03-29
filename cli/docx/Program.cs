@@ -27,6 +27,8 @@ internal static class Cli
                 "validate-template-transform" => RunValidateTemplateTransformAsync(args[1..]),
                 "strip-direct-formatting" => Task.FromResult(Transforms.RunStripDirectFormatting(args[1..])),
                 "replace-style-ids" => Task.FromResult(Transforms.RunReplaceStyleIds(args[1..])),
+                "export-json" => Task.FromResult(Transforms.RunExportJson(args[1..])),
+                "fill-template" => Task.FromResult(Transforms.RunFillTemplate(args[1..])),
                 _ => FailUnknown(args[0]),
             };
         }
@@ -92,6 +94,8 @@ internal static class Cli
         Console.WriteLine("  validate-template-transform <source-template.docx> <target-template.docx> [--json]");
         Console.WriteLine("  strip-direct-formatting <input.docx> <output.docx>");
         Console.WriteLine("  replace-style-ids <input.docx> <output.docx> <style-map.json>");
+        Console.WriteLine("  export-json <input.docx> [<output.json>]");
+        Console.WriteLine("  fill-template <template.docx> <data.json> <output.docx>");
     }
 
     private static Task<int> FailUnknown(string command)

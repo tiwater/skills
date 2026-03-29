@@ -118,4 +118,142 @@ public static class Transforms
             }
         }
     }
+
+    public static int RunExportJson(string[] args)
+    {
+        if (args.Length < 1)
+        {
+            throw new InvalidOperationException("export-json requires <input.docx> [<output.json>]");
+        }
+
+        var input = Path.GetFullPath(args[0]);
+        var output = args.Length > 1 ? Path.GetFullPath(args[1]) : null;
+
+        using var doc = WordprocessingDocument.Open(input, false);
+        var body = doc.MainDocumentPart?.Document?.Body ?? throw new InvalidOperationException("Document body not found.");
+
+        var nodes = new List<object>();
+
+        foreach (var element in body.ChildElements)
+        {
+            if (element is Paragraph p)
+            {
+                var text = string.Concat(p.Descendants<Text>().Select(t => t.Text)).Trim();
+                var style = p.ParagraphProperties?.ParagraphStyleId?.Val?.Value;
+                if (!string.IsNullOrEmpty(text))
+                {
+                    nodes.Add(new { Type = "paragraph", Style = style, Text = text });
+                }
+            }
+            else if (element is Table t)
+            {
+                var tableData = new List<List<string>>();
+                foreach (var row in t.Descendants<TableRow>())
+                {
+                    var rowData = new List<string>();
+                    foreach (var cell in row.Descendants<TableCell>())
+                    {
+                        rowData.Add(string.Concat(cell.Descendants<Text>().Select(x => x.Text)).Trim());
+                    }
+                    tableData.Add(rowData);
+                }
+                nodes.Add(new { Type = "table", Rows = tableData });
+            }
+        }
+
+        var json = JsonSerializer.Serialize(nodes, new JsonSerializerOptions { WriteIndented = true, PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+        if (output != null)
+        {
+            File.WriteAllText(output, json);
+            Console.WriteLine(output);
+        }
+        else
+        {
+            Console.WriteLine(json);
+        }
+
+        return 0;
+    }
+
+    public class TemplateData 
+    {
+        public Dictionary<string, string>? CellValues { get; set; } = new();
+        public Dictionary<string, string>? TableSlots { get; set; } = new();
+    }
+
+    public static int RunFillTemplate(string[] args)
+    {
+        if (args.Length < 3)
+        {
+            throw new InvalidOperationException("fill-template requires <template.docx> <data.json> <output.docx>");
+        }
+
+        var template = Path.GetFullPath(args[0]);
+        var dataJson = Path.GetFullPath(args[1]);
+        var output = Path.GetFullPath(args[2]);
+
+        var data = JsonSerializer.Deserialize<TemplateData>(File.ReadAllText(dataJson), new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) 
+            ?? new TemplateData();
+
+        File.Copy(template, output, overwrite: true);
+
+        using var doc = WordprocessingDocument.Open(output, true);
+        var body = doc.MainDocumentPart?.Document?.Body ?? throw new InvalidOperationException("Document body not found.");
+
+        if (data.CellValues != null)
+        {
+            foreach (var textProp in body.Descendants<Text>())
+            {
+                foreach (var kvp in data.CellValues)
+                {
+                    var place = "{{" + kvp.Key + "}}";
+                    if (textProp.Text.Contains(place))
+                    {
+                        textProp.Text = textProp.Text.Replace(place, kvp.Value);
+                    }
+                }
+            }
+        }
+
+        if (data.TableSlots != null)
+        {
+            var tables = body.Elements<Table>().ToList();
+            foreach (var kvp in data.TableSlots)
+            {
+                try 
+                {
+                    var match = System.Text.RegularExpressions.Regex.Match(kvp.Key, @"table\[(\d+)\]\.row\[(\d+)\]\.cell\[(\d+)\]");
+                    if (match.Success)
+                    {
+                        int tIdx = int.Parse(match.Groups[1].Value);
+                        int rIdx = int.Parse(match.Groups[2].Value);
+                        int cIdx = int.Parse(match.Groups[3].Value);
+
+                        if (tIdx < tables.Count)
+                        {
+                            var rows = tables[tIdx].Elements<TableRow>().ToList();
+                            if (rIdx < rows.Count)
+                            {
+                                var cells = rows[rIdx].Elements<TableCell>().ToList();
+                                if (cIdx < cells.Count)
+                                {
+                                    var cell = cells[cIdx];
+                                    cell.RemoveAllChildren<Paragraph>();
+                                    cell.Append(new Paragraph(new Run(new Text(kvp.Value))));
+                                }
+                            }
+                        }
+                    }
+                }
+                catch 
+                {
+                    // Ignore invalid slot paths
+                }
+            }
+        }
+
+        doc.MainDocumentPart!.Document.Save();
+        Console.WriteLine($"Filled template saved to {output}");
+        return 0;
+    }
 }

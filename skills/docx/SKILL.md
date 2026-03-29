@@ -19,17 +19,20 @@ Use this skill for existing `.docx` files when the main work is:
 
 Prefer OpenXML SDK for structural edits. Use the shell and Python helpers for quick preview and lightweight XML inspection.
 
-## Setup
+## Prerequisites & Auto-Installation
 
-Run the environment check first to verify `pandoc` and `dotnet` availability:
+In agentic environments, the environment must have the `tiwater-docx` command installed globally for OpenXML operations. **This skill must proactively install it if it is missing before proceeding to the main workflow.**
+
+**Step 0: Verification & Installation**
+
+Always run this check before doing deeper analysis or transformations:
 
 ```bash
-bash {baseDir}/scripts/env_check.sh
-```
-
-The `tiwater-docx` global tool is required for OpenXML operations. If it is not installed, install it:
-```bash
-dotnet tool install -g tiwater.docx.cli
+# Verify and install .NET docx tool
+if ! command -v tiwater-docx &> /dev/null; then
+    echo "tiwater-docx missing. Installing from global registry..."
+    dotnet tool install -g tiwater.docx.cli
+fi
 ```
 
 ## Routing
