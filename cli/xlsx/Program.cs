@@ -23,6 +23,7 @@ internal static class Cli
             return args[0] switch
             {
                 "inspect" => RunInspectAsync(args[1..]),
+                "export-json" => Task.FromResult(Extractor.RunExportJson(args[1..])),
                 "fill-template" => RunFillTemplateAsync(args[1..]),
                 _ => FailUnknown(args[0]),
             };
@@ -87,6 +88,7 @@ internal static class Cli
     {
         Console.WriteLine("Usage:");
         Console.WriteLine("  inspect <input.xlsx> [--json]");
+        Console.WriteLine("  export-json <input.xlsx> [<output.json>]");
         Console.WriteLine("  fill-template <template.xlsx> <data.json> <output.xlsx>");
     }
 
