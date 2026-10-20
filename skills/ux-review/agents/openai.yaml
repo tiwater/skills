@@ -1,0 +1,6 @@
+interface:
+  display_name: "UX Review"
+  short_description: "Review product vision, journeys, UI and visual quality"
+  default_prompt: "Use $ux-review to evaluate the requested scope from product intent and blueprint through journeys, interaction and visual quality. Maintain project UX documentation for a full review, distinguish evidence from assumptions, and implement only when authorized."
+policy:
+  allow_implicit_invocation: true

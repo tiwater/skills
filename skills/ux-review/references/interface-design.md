@@ -1,10 +1,4 @@
----
-name: ux-design
-description: Use when designing, reviewing, or modifying existing product UI: dashboards, sidebars, chat/editor surfaces, settings, forms, tables, dense SaaS tools, responsive layouts, interaction states, accessibility, screenshots, visual regressions, or UX polish in workflow-heavy applications.
-license: MIT
----
-
-# ux-design
+# Interface design and implementation
 
 Use this skill for product interfaces people use repeatedly to get work done. Optimize for clarity, stability, speed, and trust before visual novelty.
 
@@ -20,9 +14,9 @@ Before changing UI, identify which layer the user asked about:
 - **Behavior:** sorting, filtering, grouping, persistence, navigation, polling, mutation.
 - **Data/API:** schema, request timing, cache, loading, errors, optimistic updates.
 
-Do not cross layers without evidence. A visual request does not imply behavior, data, grouping, persistence, or navigation changes.
+For a local correction, do not cross layers without evidence. A full product review may challenge all these layers, but implementation remains limited to authorized changes. A visual request does not imply behavior, data, grouping, persistence, or navigation changes.
 
-Preserve explicit and implicit invariants: information order, row height, keyboard path, loading behavior, existing routes, user data, and local design-system conventions. If changing an invariant is necessary, state that before editing.
+For scoped implementation, identify and preserve relevant invariants: information order, keyboard path, loading behavior, compatibility, user data and local design-system conventions. During structural review, assess whether current patterns serve the approved blueprint; existing implementation is not itself a requirement. Explain necessary changes and their consequences before editing within authorization.
 
 ## Product UX Principles
 
@@ -39,7 +33,7 @@ Preserve explicit and implicit invariants: information order, row height, keyboa
    Show primary actions persistently when they are central to the workflow. Reveal secondary or destructive actions by hover, menu, disclosure, or detail view. Do not hide essential status behind hover.
 
 5. **Controls must be honest.**
-   Icon buttons need accessible names and recognizable icons. Disabled controls should explain why when practical. A control that looks clickable must do something. A destructive action needs a real confirmation pattern consistent with the app.
+   Icon buttons need accessible names and recognizable icons. Disabled controls should explain why when practical. A control that looks clickable must do something. Use confirmation or recovery proportionate to the actual consequence; reversible low-risk actions need not require interruption.
 
 6. **Responsiveness preserves the job, not the desktop layout.**
    On narrow screens, keep the most important content and actions in one coherent flow. Collapse secondary metadata, menus, and panes before creating two-row headers, clipped text, or overlapping controls.
@@ -56,7 +50,7 @@ Preserve explicit and implicit invariants: information order, row height, keyboa
 
 - Keep title, timestamp, badges, counters, and actions in predictable slots.
 - Default rows should optimize scanning; hover rows may reveal actions without moving primary content.
-- Do not reserve empty space for rare hover actions unless the surrounding pattern already does.
+- Allocate space for conditional actions deliberately so their appearance does not displace primary content; choose persistent or revealed actions according to task frequency and input mode.
 - Hover-revealed controls must also be revealed by keyboard focus, usually with `focus-within`, so tabbing never lands on invisible buttons.
 - Selection, hover, focus, unread, running, pinned, and error states must be visually distinguishable without breaking row density.
 
@@ -90,7 +84,7 @@ Preserve explicit and implicit invariants: information order, row height, keyboa
 
 ### Menus, Dialogs, and Overlays
 
-- Menus should be anchored to the triggering control and contain actions for that object only.
+- Menus should be anchored to the triggering control and make their object, selection or global scope clear.
 - Dialogs should make consequence, target object, and escape path clear.
 - Avoid overlays that obscure the title, current focus, or active work area.
 - Do not use native browser alert/confirm/prompt in projects that have a dialog system.
@@ -114,22 +108,20 @@ If a screenshot is provided, treat it as evidence for the named UI problem, not 
 - Hover-only controls are visible while focused and do not create invisible tab stops.
 - Async states do not show false empty content before loading completes.
 - Visual hierarchy supports the next user decision.
-- The diff does not remove features or hide real failures.
+- The diff preserves required capabilities and exposes real failures; any intentional retirement follows the approved decision and compatibility plan.
 - Browser verification uses the real app entrypoint and route, not only an isolated component.
 
 ## Common Failure Modes
 
 - Treating a screenshot as a broad product spec.
-- Fixing visual discomfort by deleting behavior, data, or controls.
-- Adding layout space for controls that only appear on hover.
-- Moving timestamps, badges, or metadata to make room for actions.
+- Deleting required behavior or data merely to fix visual discomfort, without a product-level rationale and authorization.
+- Letting conditional controls destabilize the layout or consume unjustified space.
+- Moving metadata inconsistently or obscuring required information to make room for actions.
 - Adding explanatory text where a clear label, icon, or state would be better.
 - Creating cards inside cards, oversized headers inside compact panels, or marketing visuals inside workflow screens.
 - Making mobile layouts by stacking everything instead of prioritizing content and actions.
 - Claiming a UI fix is complete without checking the actual route and interaction state.
 
-## When To Use Other Skills
+## Applying the guidance
 
-- Use a broad frontend-design skill for greenfield aesthetics, brand direction, marketing pages, or highly expressive visual concepts.
-- Use design-system or Figma skills when there is a source design file or token library to follow.
-- Use browser/playwright verification skills when the work affects visible behavior.
+These are contextual design defaults, not universal bans on cards, wrapping or different compositions. Justify exceptions by the user task, content and product constraints. Use `visual-review.md` for source-backed evidence and full visual coverage. Avoid introducing a mandatory external design tool or a separate skill invocation to complete this workflow.

@@ -1,0 +1,48 @@
+# Visual and interaction review
+
+Visual quality is an independent review dimension, not a synonym for functional correctness or accessibility. Apply it after establishing the relevant task and structural decisions; record details early without polishing a surface that may be retired.
+
+## Evidence and coverage
+
+Inspect actual mature-product references relevant to the task and equivalent host pages. Compare compatible states while preserving local tokens and components. Reference differences are not automatically defects. Never imply an unavailable reference was inspected.
+
+Inventory page families such as navigation shells, overview/analytics, lists/search, details, editors, dialogs and specialized workspaces. Review distinct compositions and meaningful empty, populated, loading, error, selected and overlay states. Include realistic long text, dense data, large numbers and supported scripts. For rich-content surfaces, sample the supported structures that carry meaning: ordered/continued/nested lists, heading levels, quotations, code, data tables, links and formulas. Verify visible sequence, hierarchy, alignment and wrapping against semantic structure; a short paragraph cannot represent the renderer. Check copying/export separately when it is part of the task. Do not require decorative list markers in navigation or other compositions where they convey no task meaning. Sample shared implementations with reasons and expand when variants differ.
+
+Record route, role, content state, viewport CSS dimensions, navigation state and source revision for screenshots. Compare wide, intermediate and narrow content areas, including expanded/collapsed navigation and applicable zoom. Separate screenshot pixels from CSS pixels. Side-by-side comparisons reveal system drift; normal-size inspection remains necessary.
+
+## Independent dimensions
+
+| Dimension | Inspect |
+| --- | --- |
+| Hierarchy | Dominant task, heading levels, action emphasis, supporting information and destructive emphasis. |
+| Grouping/composition | Relationships expressed by proximity, alignment, sections and layout; page/header/body continuity. |
+| Typography | Role consistency, line length/height, wrapping, truncation, font rendering, numerical alignment and mixed scripts. |
+| Density/spacing | Useful information per available working area; accumulated wrappers, both page gutters, field/group/section rhythm. |
+| Color/state | Semantic consistency, actual contrast, focus, selected/disabled/error states, and meaning independent of color. |
+| Affordance/icons | Recognizable actions, consistent symbol meaning and visual weight, discoverable keyboard/touch equivalents. |
+| Tables/charts | Decision-relevant columns, accessible actions, units, time windows, axes, scales, legends, precision and missing-versus-zero data. |
+| Responsive behavior | Preserved task order and access at intermediate widths, long content, navigation and open overlays; no reliance on phone-only screenshots. |
+| Motion/feedback | Pending state, layout shifts, transition continuity and reduced-motion behavior where relevant; distinguish animation frames from settled defects. |
+
+For each finding cite the criterion, visible discrepancy, task impact, confidence and a verification condition. Do not invent a universal padding number or treat no overflow as a pass. A table may legitimately scroll while the surrounding page must remain usable.
+
+## Interaction and recovery
+
+Walk discovery, input, pending, outcome, revisit and recovery. Preserve valid input on errors; locate problems at the relevant fields. Distinguish no data, no results, missing setup, unavailable service and lack of permission. Recovery actions must address the cause and suit the role. Ambiguous writes require reconciliation appropriate to consequences, not blind duplicate submission.
+
+Inspect open menus/dialogs, long content, scrolling, focus movement, keyboard operation, dismissal and focus return. Installed primitives reduce risk but do not prove the composed behavior correct. Confirm durable outcomes separately from optimistic feedback when authorized to exercise writes.
+
+## Sources and applicability
+
+- [NN/g visual design principles](https://www.nngroup.com/articles/principles-visual-design/) supports hierarchy and perceptual grouping.
+- [NN/g usability heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) supports consistency, meaningful language, feedback, control and error recovery.
+- [Carbon spacing](https://www.carbondesignsystem.com/building-blocks/foundations/spacing/overview), [grid](https://www.carbondesignsystem.com/building-blocks/foundations/2x-grid/guidelines) and [data tables](https://www.carbondesignsystem.com/building-blocks/core/components/data-table/guidelines) inform systematic composition and readable data presentation; their numeric tokens are not a mandate to replace host tokens.
+- [GOV.UK validation](https://design-system.service.gov.uk/patterns/validation/) and [error summaries](https://design-system.service.gov.uk/components/error-summary/) inform preserving progress and locating errors; adapt to form complexity and local controls.
+- [WAI-ARIA dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) informs modal focus, keyboard behavior and naming.
+- [WCAG 2.2](https://www.w3.org/TR/WCAG22/) supplies measurable accessibility requirements. Check the actual criterion and exceptions before alleging conformance failures.
+
+Selected WCAG checks: normal text contrast 4.5:1 and large text 3:1 (1.4.3); applicable non-text contrast 3:1 (1.4.11); reflow at 320 CSS px with defined exceptions (1.4.10); text resize to 200% (1.4.4); target size 24×24 CSS px or the criterion's exceptions (2.5.8); keyboard, focus and programmatic names/status (2.1.1, 2.4.7, 2.4.11, 4.1.2, 4.1.3). This selection is not a complete accessibility audit. Measure and operate rather than asserting from screenshots.
+
+Published guidance, project requirements and reviewer hypotheses have different authority. Record exceptions and uncertainty. Use evidence-backed visual judgments without claiming objective aesthetic superiority or measured user benefit from inspection alone.
+
+- [W3C WAI content structure](https://www.w3.org/WAI/tutorials/page-structure/content/) explains semantic lists and content relationships. [Tailwind Preflight](https://tailwindcss.com/docs/preflight#lists-are-unstyled) documents how framework resets remove visible list markers and heading styles. These motivate a rendered content-fidelity check; correct markup alone is not proof of visual meaning, and a reset alone is not proof of a defect.
