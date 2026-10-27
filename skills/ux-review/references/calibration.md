@@ -69,4 +69,6 @@ Challenge a proposed audit with these transfer tests:
 
 These probes test coverage and reasoning. They do not require particular product features or authorize work outside the user's scope.
 
+Also forward-test dense, persistent controls with this independent case: on a wide page, an editor's action cluster still wraps into several rows while substantial horizontal space remains; two neighboring mode icons both appear to enter an editable state. The review must measure the cluster's actual inner width and rendered control bounds, operate both safe modes, and establish whether the remaining space is usable and whether the resulting states differ in a user-relevant way. A narrow viewport or a deliberately separated group may justify wrapping; the audit must not prescribe one row without task evidence. Mark the visual pass failed or unverified until those observations exist. This probe checks execution of [visual-review.md](visual-review.md), not a new layout rule or a requirement to find a defect in every cluster.
+
 For iterative audits, apply [review-convergence.md](review-convergence.md) to classify misses, forward-test changes and distinguish bounded saturation from product readiness.
