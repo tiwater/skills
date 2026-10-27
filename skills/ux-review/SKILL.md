@@ -52,7 +52,7 @@ Use [product-review.md](references/product-review.md) for coverage and task walk
 
 In authorized implementation, fix causes and connected consumers rather than merely describing defects. Choose the smallest cohesive change that restores the intended outcome; structural problems may require structural changes. For local visual requests, preserve behavior and data semantics. For broader authorized redesigns, explicitly address affected compatibility, migration, permissions and dependent tasks.
 
-Use existing components and tokens. Keep canonical values separate from display formatting. Verify the actual rendered route, open controls and relevant keyboard/responsive states. Exercise saved results and downstream use with authorized fixtures where needed. Review-only scope never permits writes merely to obtain evidence.
+Use existing components and tokens. Keep canonical values separate from display formatting. Verify the actual rendered route, open controls and relevant keyboard/responsive states. For a dense or persistent control cluster in scope, use the measured layout and interaction ledger in [visual-review.md](references/visual-review.md); a viewport sweep without component-width, row-allocation and control-effect evidence is not responsive acceptance. Exercise saved results and downstream use with authorized fixtures where needed. Review-only scope never permits writes merely to obtain evidence.
 
 ## Delivery and readiness
 
