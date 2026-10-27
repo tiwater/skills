@@ -14,6 +14,8 @@ Inspect a full-frame screenshot before cropping into controls. Trace all four ed
 
 For container queries, resizable panes and nested layouts, record the component's actual available width as well as the viewport width. Test relevant layout transitions on both sides of their thresholds; viewport dimensions alone do not establish how much room a component has.
 
+When browser tooling is available, add a rendered-integrity pass to screenshot inspection: check the browser console and failed asset requests, and measure relevant element bounds against their clipping/scroll containers. Look for content outside the viewport, clipped or overlapping controls, unexpected wrapping, unreachable actions and large unused regions in the active content lane. Record the actual viewport and component widths. Automated checks can establish measurable faults, but cannot establish good hierarchy or composition; inspect the full screenshot at normal scale as well. If tooling or access is unavailable, mark those checks unverified instead of inferring a pass from source or a cropped image.
+
 ## Independent dimensions
 
 | Dimension | Inspect |
@@ -34,6 +36,8 @@ For each finding cite the criterion, visible discrepancy, task impact, confidenc
 
 Walk discovery, input, pending, outcome, revisit and recovery. Preserve valid input on errors; locate problems at the relevant fields. Distinguish no data, no results, missing setup, unavailable service and lack of permission. Recovery actions must address the cause and suit the role. Ambiguous writes require reconciliation appropriate to consequences, not blind duplicate submission.
 
+For dense action surfaces such as composers, toolbars and segmented controls, map each visible control to its actual effect and scope. Activate each safe control and compare the resulting states: identify duplicate outcomes, unexplained distinctions, misleading icon/label pairings, controls whose effect cannot be discovered, and actions displaced despite usable space. Judge the result from the user's visible context; internal state names do not explain a control. Repeat with realistic content and at the actual widths where controls wrap, collapse or move.
+
 Inspect open menus/dialogs, long content, scrolling, focus movement, keyboard operation, dismissal and focus return. Installed primitives reduce risk but do not prove the composed behavior correct. Confirm durable outcomes separately from optimistic feedback when authorized to exercise writes.
 
 ## Sources and applicability
@@ -50,3 +54,4 @@ Selected WCAG checks: normal text contrast 4.5:1 and large text 3:1 (1.4.3); app
 Published guidance, project requirements and reviewer hypotheses have different authority. Record exceptions and uncertainty. Use evidence-backed visual judgments without claiming objective aesthetic superiority or measured user benefit from inspection alone.
 
 - [W3C WAI content structure](https://www.w3.org/WAI/tutorials/page-structure/content/) explains semantic lists and content relationships. [Tailwind Preflight](https://tailwindcss.com/docs/preflight#lists-are-unstyled) documents how framework resets remove visible list markers and heading styles. These motivate a rendered content-fidelity check; correct markup alone is not proof of visual meaning, and a reset alone is not proof of a defect.
+- [Huashu Design](https://github.com/alchaincyf/huashu-design) is a useful workflow reference for inspecting rendered artifacts and separating objective integrity checks from subjective design judgment. Its artifact-generation workflow and style presets are not UX standards and are not requirements for this review method.
