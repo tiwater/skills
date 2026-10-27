@@ -17,6 +17,12 @@ Evaluate whether a product delivers its intended value before optimizing how its
 
 Review-only work does not authorize product changes. Maintaining review documents is appropriate when requested or included in a product-wide review, but respect instructions forbidding file edits. Proposed removal is not permission to delete features, routes, APIs or data. Preserve user decisions, repository rules, real data and compatibility until an authorized change addresses them.
 
+## Challenge the product model before its screens
+
+For whole-product and structural reviews, derive a task/ownership model from intended users and outcomes **before using the current navigation as the review plan**. Existing pages, API resources, component boundaries and past audit findings are evidence, not the target architecture. Read [structure-and-language.md](references/structure-and-language.md) and produce the boundary comparison it requires. A route inventory alone cannot pass this gate.
+
+Review as an intended customer, not a teammate: explicitly separate reasonable role knowledge from product-internal knowledge learned from source, previous turns or administrator access. Source inspection may diagnose a failure but cannot repair missing information in the user's journey. Apply this distinction to navigation, input choices, status, errors, examples and help, not just labels.
+
 ## Review from the top down
 
 1. **Vision and boundaries:** establish intended users, needs, value, success conditions and non-goals from authoritative project evidence. Mark assumptions; do not invent a vision to justify the current implementation.
@@ -27,6 +33,14 @@ Review-only work does not authorize product changes. Maintaining review document
 6. **Visual system and details:** assess composition, hierarchy, typography, density, responsive behavior and accessibility across page families; then inspect spacing, labels, icons and individual control states.
 
 Record lower-level observations whenever encountered, but resolve structural uncertainty before specifying detailed redesigns that depend on it. An unresolved vision question does not prevent independent evidence gathering. Do not use a pixel-level defect list as a substitute for product readiness assessment.
+
+## Coordinate review work with Beads
+
+Prefer **Beads (`bd`) for actionable review findings and follow-up coordination** when available, following the repository's tracking rules. Read `bd prime`, search by the stable finding/reference before creating a task, and update or reopen an existing bead when the cause is already tracked. Capture the affected goal/trigger, impact, source revision, evidence limits and observable acceptance criteria. Use parent/related links for shared causes and blocking edges only for actual prerequisites. Claim work before implementation and leave verification pending until its evidence exists.
+
+Beads owns current task status, priority, ownership, dependencies, blockers and handoff. Markdown owns durable intent, blueprint, review observations, decisions and dated verification evidence; cross-link it to beads rather than maintaining parallel TODO lists or live status tables. Historical dispositions are evidence, not a current backlog. Use GitHub Issues only when requested or justified by external/public discussion, and link them instead of automatically mirroring review tasks.
+
+Task capture does not authorize product changes in review-only mode, nor external publication, delegation or changes to tracking infrastructure. If Beads is unavailable, preserve findings in the authorized review output and state the tracking limitation; do not silently create a second tracker or require installation before continuing independent review. See [documentation.md](references/documentation.md) for evidence and task boundaries.
 
 ## Evidence and traceability
 
@@ -45,7 +59,8 @@ Use existing components and tokens. Keep canonical values separate from display 
 A complete review accounts for its agreed scope; it does not promise to discover every issue. Report:
 
 - Core goals that work, fail, require assistance or remain unverified, by relevant role and starting condition.
-- Vision/blueprint mismatches and systemic causes before local symptoms.
+- Vision/blueprint mismatches and systemic causes before local symptoms. Include explicit retain/combine/split/move/retire judgments for related surface groups, with evidence and legitimate reasons for separation; do not silently accept the current partition.
+- Knowledge assumptions the interface requires, how users obtain that knowledge, and unresolved terminology or ownership ambiguities.
 - Visual findings separately from functional completion.
 - Decisions needed, proposed repair order and observable verification criteria.
 - Coverage gaps and remaining assumptions.

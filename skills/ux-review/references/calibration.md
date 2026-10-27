@@ -26,6 +26,10 @@ A mature reference demonstrates one solution under its own constraints. Reuse th
 
 These criteria do not prescribe a particular menu order, number of buttons, breakpoint, page structure or input type. Such decisions require local evidence. Concrete external requirements still retain their actual thresholds and exceptions; generalization must not dilute them.
 
+## Structural and knowledge calibration
+
+Use the required comparison in [structure-and-language.md](structure-and-language.md). Include a product whose pages all work but divide one task by backend resources; the review must challenge that partition. Include a counterexample where shared information appears in distinct role-specific views; the review must not merge them merely to remove repetition. Include a technically experienced user who knows the domain but cannot infer the product's internal lifecycle. The review must identify the missing concept without treating all technical vocabulary as forbidden.
+
 ## Test transfer, not recollection
 
 For each proposed rule or finding:

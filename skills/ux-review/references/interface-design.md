@@ -41,8 +41,8 @@ For scoped implementation, identify and preserve relevant invariants: informatio
 7. **Accessibility is part of layout quality.**
    Verify keyboard focus, visible focus indicators, semantic names, sufficient contrast, non-color-only status, reduced motion where relevant, and pointer targets. WCAG 2.2 AA target size is at least 24 by 24 CSS pixels unless an allowed exception applies.
 
-8. **Existing product language wins.**
-   Reuse local tokens, components, icon families, radius, density, and state patterns. Introduce new patterns only when the existing system cannot express the needed behavior cleanly.
+8. **Reuse the visual system; verify the conceptual language.**
+   Reuse local tokens, components, icon families, radius, density, and state patterns. Existing internal names and page boundaries are not protected conventions: validate them against user tasks and role knowledge. Introduce new visual patterns only when the existing system cannot express the needed behavior cleanly.
 
 ## Component Guidance
 
@@ -91,7 +91,7 @@ For scoped implementation, identify and preserve relevant invariants: informatio
 
 ## Implementation Workflow
 
-1. Inspect the local implementation and at least one adjacent similar component.
+1. Confirm the affected task, scope and conceptual home against the blueprint; do not preserve an unjustified page boundary by default. Inspect the local implementation and at least one adjacent similar component.
 2. Name the exact UI block and states affected.
 3. Write down the invariants that must not change.
 4. Make the smallest cohesive diff using local components, tokens, and icon libraries.

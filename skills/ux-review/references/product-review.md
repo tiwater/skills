@@ -8,6 +8,10 @@ Assess necessity and product fit before usability. For each significant capabili
 
 A recommendation may retain, redesign, consolidate, move or retire a capability. Record its rationale, alternatives, dependent consumers and confidence. Before implementing retirement inspect adoption, contracts, permissions, retained data, migration and rollback. An audit recommendation alone authorizes none of these changes.
 
+## Structural review gate
+
+Follow [structure-and-language.md](structure-and-language.md) before treating the route inventory as a coverage plan. Derive intended task groups, compare related surfaces and record a reasoned boundary decision for each major group. Test both redundant peers and fragmented tasks; also preserve justified specialist views. Carry the intended role's knowledge assumptions into every walkthrough.
+
 ## Build the blueprint
 
 The blueprint describes how the intended value is delivered, not just how existing pages connect. Include:

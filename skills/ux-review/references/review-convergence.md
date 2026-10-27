@@ -6,6 +6,8 @@ Use for comprehensive review and iterative skill evaluation, not as overhead for
 
 Before another pass, select the highest-impact unresolved branch from the blueprint. For each core outcome distinguish **not visited**, **observed**, **operated**, **saved/revisited**, and **blocked by authorization/environment**. A page read cannot close an interaction or lifecycle branch. Keep functional, visual and role coverage separate. Before treating a branch as blocked, verify the specific missing access or state using an authorized, non-mutating check; a missing independent persona does not make every surface for that role inaccessible. Continue available source/contract inspection separately, without promoting it to executed role evidence. Complete feasible read-only work before ending; do not use an honest coverage appendix as a substitute for the requested review.
 
+Before repeating a page pass, challenge the current and previously proposed information architecture using [structure-and-language.md](structure-and-language.md). A past blueprint can itself preserve the implementation bias. A new audit must not inherit an old completion claim.
+
 Choose complementary passes: one follows the user from a realistic starting condition; another works backward from the required useful result to prerequisites and owners; a visual pass inspects rendered compositions with meaningful populated/error/overlay states. Repeating the same navigation with the same privileged data is weak evidence of convergence.
 
 At each decision or handoff establish:
