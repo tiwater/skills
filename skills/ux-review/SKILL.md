@@ -46,7 +46,7 @@ Task capture does not authorize product changes in review-only mode, nor externa
 
 Link `goal → journey → capability/surface → finding → decision → verification`. Distinguish confirmed intent, assumptions, observed behavior, expert judgment and hypotheses needing user research. Sources establish criteria; they do not prove that a particular interface fails them.
 
-Use [product-review.md](references/product-review.md) for coverage and task walkthroughs. Use [visual-review.md](references/visual-review.md) for independent visual evidence. Follow relevant mature-product references and local design systems, but copy neither unsupported capabilities nor unrelated visual conventions.
+Use [product-review.md](references/product-review.md) for coverage and task walkthroughs. Use [visual-review.md](references/visual-review.md) for independent visual evidence and its required whole-screen critique. Follow relevant mature-product references and local design systems, but copy neither unsupported capabilities nor unrelated visual conventions.
 
 ## Design and implementation
 
