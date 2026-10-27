@@ -10,6 +10,10 @@ Inventory page families such as navigation shells, overview/analytics, lists/sea
 
 Record route, role, content state, viewport CSS dimensions, navigation state and source revision for screenshots. Compare wide, intermediate and narrow content areas, including expanded/collapsed navigation and applicable zoom. Separate screenshot pixels from CSS pixels. Side-by-side comparisons reveal system drift; normal-size inspection remains necessary.
 
+Inspect a full-frame screenshot before cropping into controls. Trace all four edges, the content lane and persistent chrome for alignment, unused space, density, clipping and action reach. A page can avoid overflow and still be poorly composed.
+
+For container queries, resizable panes and nested layouts, record the component's actual available width as well as the viewport width. Test relevant layout transitions on both sides of their thresholds; viewport dimensions alone do not establish how much room a component has.
+
 ## Independent dimensions
 
 | Dimension | Inspect |
