@@ -54,6 +54,8 @@ In authorized implementation, fix causes and connected consumers rather than mer
 
 Use existing components and tokens. Keep canonical values separate from display formatting. Verify the actual rendered route, open controls and relevant keyboard/responsive states. For a dense or persistent control cluster in scope, use the measured layout and interaction ledger in [visual-review.md](references/visual-review.md); a viewport sweep without component-width, row-allocation and control-effect evidence is not responsive acceptance. Exercise saved results and downstream use with authorized fixtures where needed. Review-only scope never permits writes merely to obtain evidence.
 
+**Concrete-component review gate:** When the user names a component/control or supplies a screenshot, make that surface the center of the review. Do not stop at describing the screenshot or inspecting source: capture the uncropped rendered component, operate every safe in-scope control, and record each control's visible name, actual effect, resulting state, and return/dismiss path where applicable. Measure the component's own available width, occupied rows/height, and the work area left to the primary task; repeat in the expanded state and at widths where its composition changes. If a transition cannot be exercised, mark it unverified. Do not call the component reviewed until its interaction and composition evidence exists; do not broaden into unrelated product areas while this scoped review remains incomplete.
+
 ## Delivery and readiness
 
 A complete review accounts for its agreed scope; it does not promise to discover every issue. Report:
