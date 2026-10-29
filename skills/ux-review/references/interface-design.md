@@ -1,8 +1,8 @@
 # Interface design and implementation
 
-Use this skill for product interfaces people use repeatedly to get work done. Optimize for clarity, stability, speed, and trust before visual novelty.
+Use this reference primarily for **Operate** (dashboards, editors, tables, settings, admin tools) and **Read** (documentation, guides, references) surfaces that people use repeatedly to get work done or understand a system. Optimize for clarity, earned familiarity, spatial stability, speed, and trust before visual novelty.
 
-This is not a landing-page or brand-art skill. For operational screens, the best UI usually preserves user context, makes status legible, keeps controls predictable, and avoids surprising behavior changes.
+For **Persuade** (landing pages, launches, pricing) and **Experience** (interactive showcases, live demos) surfaces — as well as the universal craft floor, anti-slop diagnostic rules, and design steering moves (`distill`, `bolder`, `quieter`, `layout`, `typeset`, `colorize`, `animate`, `clarify`, `harden`, `adapt`, `polish`) across all surfaces — read [craft-and-slop.md](craft-and-slop.md) alongside this file. For operational screens, keep marketing decoration out of workflow areas; for persuasive landing screens, do not flatten narrative proof into timid operational card grids.
 
 ## Operating Contract
 
@@ -85,9 +85,18 @@ For scoped implementation, identify and preserve relevant invariants: informatio
 ### Menus, Dialogs, and Overlays
 
 - Menus should be anchored to the triggering control and make their object, selection or global scope clear.
+- Ensure overlays escape clipping ancestors: an absolutely positioned menu, tooltip, or popover inside `overflow: hidden` or `overflow: auto` gets cut off; use portals, `<dialog>`, Popover primitives, or fixed positioning.
+- Exhaust inline or progressive disclosure before reaching for a modal; reserve dialogs for tasks requiring interruption, protected focus, or explicit consequence confirmation.
 - Dialogs should make consequence, target object, and escape path clear.
 - Avoid overlays that obscure the title, current focus, or active work area.
 - Do not use native browser alert/confirm/prompt in projects that have a dialog system.
+
+### Resilience, Internationalization, and Adaptation
+
+- **Flex and grid overflow safety:** set `min-width: 0` (and `min-height: 0` where needed) on flex and grid children so long tokens, URLs, filenames, or localized strings truncate or wrap cleanly instead of blowing out layout tracks.
+- **Localization and script resilience:** allow 30–40% width expansion for translations rather than hard-coding narrow button/column widths; use logical CSS properties (`margin-inline`, `padding-inline`, `border-inline-start`) where bidirectional layouts apply; test mixed scripts (such as CJK paired with Latin/numerals) and `Intl` number/date formatting.
+- **Typography and motion restraint in Operate surfaces:** prefer a fixed `rem` role scale with tight steps (1.125–1.2) over fluid `clamp()` headings that shrink awkwardly inside panes, and keep routine transitions fast (100–250 ms) with zero page-load choreography.
+- **Input method and gesture resilience:** separate `@media (hover: hover)` from coarse touch devices (`pointer: coarse`); never gate essential actions behind hover alone; clear custom drag/slider states cleanly on `pointercancel`, `lostpointercapture`, and window `blur`.
 
 ## Implementation Workflow
 

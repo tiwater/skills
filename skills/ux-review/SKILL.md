@@ -1,19 +1,26 @@
 ---
 name: ux-review
-description: Review, design, and improve product UX from vision and product blueprint through user journeys, interactions, visual systems, and UI implementation. Use for whole-product audits, project UX documentation, workflow design, and actionable UI feedback. Preserve review-only scope; scale local changes to the affected task. Not for backend-only refactors or standalone brand artwork.
+description: Review, design, and improve product UX and frontend craft from vision and product blueprint through user journeys, landing/showcase pages, documentation, operational interfaces, visual systems, and UI implementation. Use for whole-product audits, project UX documentation, landing page redesigns, workflow design, anti-slop critique, and actionable UI feedback. Preserve review-only scope; scale local changes to the affected task. Not for backend-only refactors or standalone brand artwork.
 license: MIT
 ---
 
 # UX review
 
-Evaluate whether a product delivers its intended value before optimizing how its existing screens look. Existing features, pages and APIs are hypotheses to assess, not automatic requirements to preserve. Combine product review and UI design in this single entry point.
+Evaluate whether a product or surface delivers its intended value before optimizing how its existing screens look. Existing features, pages and APIs are hypotheses to assess, not automatic requirements to preserve. Combine product review, visual critique, persuasive landing craft, and operational UI design in this single entry point.
 
 ## Choose the scope and mode
 
 - **Whole-product review:** follow the top-down method below and maintain the project's review record, normally in `docs/ux`. Read [product-review.md](references/product-review.md) and [documentation.md](references/documentation.md).
 - **Journey or feature review:** trace the affected goal, dependencies and downstream outcome against the existing blueprint. Expand only where evidence shows a connected issue.
-- **Design or implementation:** establish the relevant product and journey decisions, then use [interface-design.md](references/interface-design.md) and [visual-review.md](references/visual-review.md) to design, implement and verify within authorization.
+- **Design or implementation:** establish the relevant product, audience and surface-mode decisions, then use [craft-and-slop.md](references/craft-and-slop.md), [interface-design.md](references/interface-design.md) and [visual-review.md](references/visual-review.md) to design, implement and verify within authorization.
 - **Local UI correction:** inspect the affected component, neighboring surfaces and relevant states. Do not require a new vision document or product-wide audit for an isolated fix.
+
+Choose the **surface mode** from the visitor's job on the target route, never from the company category as a whole (see [craft-and-slop.md](references/craft-and-slop.md)):
+
+- **Operate** (dashboards, editors, tables, settings, admin tools): optimize for task completion, earned familiarity, spatial stability, restrained semantic color, and immediate state legibility.
+- **Read** (documentation, guides, references, articles, changelogs): optimize for comprehension and wayfinding — a calm 60–75ch reading column inside a distinctive product-owned frame.
+- **Persuade** (landing pages, launches, pricing, campaigns): optimize for belief and action — an unmistakable first-viewport focal proof, clear conversion action, varied section cadence, and committed visual point of view grounded in real product truth.
+- **Experience** (interactive showcases, live playgrounds, galleries, portfolios): let the live artifact lead from the first viewport while surrounding chrome recedes.
 
 Review-only work does not authorize product changes. Maintaining review documents is appropriate when requested or included in a product-wide review, but respect instructions forbidding file edits. Proposed removal is not permission to delete features, routes, APIs or data. Preserve user decisions, repository rules, real data and compatibility until an authorized change addresses them.
 
@@ -46,13 +53,13 @@ Task capture does not authorize product changes in review-only mode, nor externa
 
 Link `goal → journey → capability/surface → finding → decision → verification`. Distinguish confirmed intent, assumptions, observed behavior, expert judgment and hypotheses needing user research. Sources establish criteria; they do not prove that a particular interface fails them.
 
-Use [product-review.md](references/product-review.md) for coverage and task walkthroughs. Use [visual-review.md](references/visual-review.md) for independent visual evidence and its required whole-screen critique. Follow relevant mature-product references and local design systems, but copy neither unsupported capabilities nor unrelated visual conventions.
+Use [product-review.md](references/product-review.md) for coverage and task walkthroughs. Use [visual-review.md](references/visual-review.md) and [craft-and-slop.md](references/craft-and-slop.md) for independent visual evidence, unanchored design-specificity critique, cognitive-load probes, and anti-slop inspection. Follow relevant mature-product references and local design systems, but copy neither unsupported capabilities nor unrelated visual conventions.
 
 ## Design and implementation
 
-In authorized implementation, fix causes and connected consumers rather than merely describing defects. Choose the smallest cohesive change that restores the intended outcome; structural problems may require structural changes. For local visual requests, preserve behavior and data semantics. For broader authorized redesigns, explicitly address affected compatibility, migration, permissions and dependent tasks.
+In authorized implementation, fix causes and connected consumers rather than merely describing defects. Choose the smallest cohesive change that restores the intended outcome; structural problems or full-surface redesigns require decisive structural changes rather than cosmetic polish on a flawed scaffold. Distinguish refinement (preserving the incumbent visual world and copy outside scope) from authorized redesign (preserving factual product truth, constraints and brand commitments while replacing a generic or broken visual scaffold). For local visual requests, preserve behavior and data semantics. For broader authorized redesigns, explicitly address affected compatibility, migration, permissions and dependent tasks.
 
-Use existing components and tokens. Keep canonical values separate from display formatting. Verify the actual rendered route, open controls and relevant keyboard/responsive states. For a dense or persistent control cluster in scope, use the measured layout and interaction ledger in [visual-review.md](references/visual-review.md); a viewport sweep without component-width, row-allocation and control-effect evidence is not responsive acceptance. Exercise saved results and downstream use with authorized fixtures where needed. Review-only scope never permits writes merely to obtain evidence.
+Apply the baseline craft floor and targeted steering moves (`distill`, `bolder`, `quieter`, `layout`, `typeset`, `colorize`, `animate`, `clarify`, `harden`, `adapt`, `polish`) in [craft-and-slop.md](references/craft-and-slop.md) before shipping. Use existing components and tokens where established. Keep canonical values separate from display formatting. Verify the actual rendered route, open controls, light/dark themes where supported, and relevant keyboard/touch/responsive states. For a dense or persistent control cluster in scope, use the measured layout and interaction ledger in [visual-review.md](references/visual-review.md); a viewport sweep without component-width, row-allocation and control-effect evidence is not responsive acceptance. Exercise saved results and downstream use with authorized fixtures where needed. Review-only scope never permits writes merely to obtain evidence.
 
 **Concrete-component review gate:** When the user names a component/control or supplies a screenshot, make that surface the center of the review. Do not stop at describing the screenshot or inspecting source: capture the uncropped rendered component, operate every safe in-scope control, and record each control's visible name, actual effect, resulting state, and return/dismiss path where applicable. Measure the component's own available width, occupied rows/height, and the work area left to the primary task; repeat in the expanded state and at widths where its composition changes. If a transition cannot be exercised, mark it unverified. Do not call the component reviewed until its interaction and composition evidence exists; do not broaden into unrelated product areas while this scoped review remains incomplete.
 

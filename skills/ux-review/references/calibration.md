@@ -42,6 +42,11 @@ For each proposed rule or finding:
 
 For example, scrolling can preserve readable comparison in a large dataset. The review must establish which information or action becomes difficult to reach under the actual task; “scrolling exists” is insufficient evidence of a defect. This illustrates a reasoning boundary, not a preferred table implementation.
 
+Apply the same boundary discipline to surface modes and anti-slop diagnostics in [craft-and-slop.md](craft-and-slop.md):
+
+- **Mode sensitivity:** A dramatic asymmetric hero, display scale jump, or page-scale color field that strengthens a **Persuade** landing page is usually extraneous noise on an **Operate** management table; conversely, restraining a **Persuade** surface to uniform neutral admin cards fails its communicative job. Judge the surface against its visitor mode, not a single universal aesthetic.
+- **Anti-slop counterexamples:** Repeated equal cards are a lazy default when wrapping heterogeneous narrative points, yet legitimate when comparing peer pricing tiers or catalog items. Numbered markers (`01 / 02 / 03`) are filler on arbitrary marketing chapters, yet helpful on an ordered installation sequence. Monospace is a costume on body prose, yet essential for commands, identifiers and aligned numeric telemetry. Always establish the failure mechanism in context before prescribing removal.
+
 ## Evidence and severity calibration
 
 Record the observed state separately from inferred user impact and proposed remedy. Link each finding to the relevant criterion and describe how it could be checked. A rendered defect can be established directly; an efficiency or comprehension hypothesis may need task observation or comparison before its magnitude is known.
