@@ -1,0 +1,6 @@
+interface:
+  display_name: "UX Design"
+  short_description: "Design and implement coherent, verified interfaces"
+  default_prompt: "Use $ux-design to improve the requested interface within its authorized scope, preserve accepted strengths, implement a justified change and verify the rendered result."
+policy:
+  allow_implicit_invocation: true
